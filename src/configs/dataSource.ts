@@ -9,7 +9,7 @@ export const AppDataSource = new DataSource({
   password: '1234',
   database: 'typeorm_study',
   synchronize: true,
-  logging: true,
+  // logging: true,
   entities: [Photo],
   subscribers: [],
   migrations: [],

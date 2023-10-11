@@ -17,9 +17,9 @@ const handler: Handler = async (req, res) => {
   // const { username, password } = body;
 
   const photo = new Photo();
-  photo.name = 'Me and Bears';
+  // photo.name = 'Me and Bears';
   photo.description = 'I am near polar bears';
-  photo.filename = 'photo-with-bears.jpg';
+  // photo.filename = 'photo-with-bears.jpg';
   photo.views = 1;
   photo.isPublished = true;
 
