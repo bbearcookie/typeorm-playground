@@ -1,4 +1,5 @@
 import { DataSource } from 'typeorm';
+import { Photo } from '@/models/Photo';
 
 export const AppDataSource = new DataSource({
   type: 'mysql',
@@ -9,7 +10,7 @@ export const AppDataSource = new DataSource({
   database: 'typeorm_study',
   synchronize: true,
   logging: true,
-  entities: [],
+  entities: [Photo],
   subscribers: [],
   migrations: [],
 });
