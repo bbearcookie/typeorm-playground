@@ -1,5 +1,6 @@
 import { DataSource } from 'typeorm';
 import { Photo } from '@/models/Photo';
+import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 
 export const AppDataSource = new DataSource({
   type: 'mysql',
@@ -13,4 +14,5 @@ export const AppDataSource = new DataSource({
   entities: [Photo],
   subscribers: [],
   migrations: [],
+  namingStrategy: new SnakeNamingStrategy(),
 });
