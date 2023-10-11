@@ -1,12 +1,14 @@
 import express, { Request, Response, NextFunction } from 'express';
 import app from '@/configs/express';
 import { AppDataSource } from '@/configs/dataSource';
+import getPhotos from '@/handlers/photos/get';
 import postPhoto from '@/handlers/photos/post';
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
+app.get('/photos', getPhotos);
 app.post('/photos', postPhoto);
 
 /**
