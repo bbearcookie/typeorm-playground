@@ -3,6 +3,7 @@ import app from '@/configs/express';
 import { AppDataSource } from '@/configs/dataSource';
 import getPhotos from '@/handlers/photos/get';
 import postPhoto from '@/handlers/photos/post';
+import { Post } from './models/Post';
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
@@ -20,7 +21,16 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 });
 
 AppDataSource.initialize()
-  .then(() => console.log('Database connected!'))
+  .then(async () => {
+    console.log('Database connected!');
+
+    const postRepository = AppDataSource.getRepository(Post);
+
+    const post = new Post();
+    post.title = 'Hello';
+    post.content = 'World';
+    await postRepository.save(post);
+  })
   .catch((err) => console.log(err));
 
 app.listen(5010, () => {

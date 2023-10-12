@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, JoinColumn, OneToMany, ManyToOne } from 'typeorm';
 import { User } from './User';
 import { Comment } from './Comment';
 
@@ -13,13 +13,15 @@ export class Post {
   @Column({ length: 500 })
   content!: string;
 
-  @Column({ length: 50 })
+  @Column({ length: 50, nullable: true })
   imageName!: string;
 
   @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
   createdAt!: Date;
 
-  @ManyToOne(() => User, (user) => user.posts)
+  @ManyToOne(() => User, (user) => user.posts, {
+    cascade: true,
+  })
   author!: User;
 
   @OneToMany(() => Comment, (comment) => comment.id)
